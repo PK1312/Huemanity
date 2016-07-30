@@ -1,7 +1,25 @@
+from os import path
 from qhue import Bridge, create_new_username
+import requests
+i = requests.get("https://www.meethue.com/api/nupnp")
+info = i.json()
+ipaddress = info[0].get("internalipaddress")
+CRED_FILE_PATH = "qhue_username.txt"
 
-username = create_new_username("<Your bridge IP")
-b = Bridge("<Your bridge IP", "username")
+if not path.exists(CRED_FILE_PATH):
+    while True:
+        try:
+            username = create_new_username(BRIDGE_IP)
+            break
+        except QhueException as err:
+            print "Error occurred while creating a new username: {}".format(err)
+
+    with open(CRED_FILE_PATH, "w") as cred_file:
+        cred_file.write(username)
+else:
+    with open(CRED_FILE_PATH, "r") as cred_file:
+        username = cred_file.read()
+b = Bridge(ipaddress, username)
 
 def turnon(lightname):
     bright = raw_input("How bright would you like the light(s) to be, where 1 is the dimmest and 254 is the brightest? ")
@@ -36,7 +54,7 @@ while True:
         if command in commands:
             commandFunction = commands[command]
             if light == "all":
-                for bulb in lightlist:
+                for bulb in lightlist.keys():
                     commandFunction(bulb)
             else:
                 commandFunction(light)
