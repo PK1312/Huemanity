@@ -46,7 +46,7 @@ while True:
 
     allLights = lightlist.keys()
     allLights.append("all")
-    light = raw_input("What lights are you looking to turn on or off? Valid inputs are "+", ".join(allLights)+". You can also type 'quit' to end the application. ")
+    light = raw_input("What lights are you looking to turn on or off? Valid inputs are "+", ".join(allLights)+". You can also type 'quit' to end the application. ").lower()
 
 
     if light in allLights:
