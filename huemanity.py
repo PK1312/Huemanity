@@ -64,4 +64,4 @@ while True:
     elif light == "quit":
         break
     else:
-        print "You must enter a valid command. "
+        print "You must enter a valid command, yo. "
