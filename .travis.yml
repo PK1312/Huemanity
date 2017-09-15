@@ -3,7 +3,9 @@ matrix:
   include:
     - python: "2.7"
     - python: "2.7"
-    sudo: true
+      sudo: true
     - python: "2.7"
-    os: osx
+      os: osx
+    - python: "2.7"
+      dist: precise
 script: true
