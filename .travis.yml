@@ -1,6 +1,3 @@
 language: python
-matrix:
-  include:
-    - python: "2.7"
-      env: default
+os: osx
 script: true
