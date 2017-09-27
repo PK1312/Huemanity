@@ -61,7 +61,7 @@ while True:
         else:
             print "You must enter either on, off, or quit. "
 
-    elif light == "quit":
+    elif light == "quit".lower():
         break
     else:
         print "You must enter a valid command. "
