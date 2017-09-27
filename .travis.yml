@@ -2,5 +2,5 @@ language: python
 dist: trusty
 sudo: required
 before_install:
-  sudo pip install qhue
+  sudo pip install -H qhue
 script: true
