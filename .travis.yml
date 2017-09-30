@@ -1,5 +1,4 @@
 language: python
-os: osx
 before_install:
   sudo -H pip install qhue
 script: true
