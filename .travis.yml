@@ -2,3 +2,4 @@ language: python
 before_install:
   sudo -H pip install qhue
 script: true
+after_success: pip install awscli
