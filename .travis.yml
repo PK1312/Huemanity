@@ -1,4 +1,6 @@
-language: scala
-sudo: required
+language: python
+jobs:
+  include:
+    if: NOT type in (pull_request)
+    os: osx
 script: true
-after_success: pip install awscli
