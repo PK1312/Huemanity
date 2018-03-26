@@ -4,3 +4,5 @@ jobs:
     if: NOT type in (pull_request)
     os: osx
 script: true
+addons:
+  postgresql: 9.6
