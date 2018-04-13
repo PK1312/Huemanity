@@ -1,9 +1,3 @@
 language: python
 sudo: required
-
-jobs:
-  include:
-    stage: test1
-    script: true
-    stage: test2
-    script: true
+script: testscript.sh
