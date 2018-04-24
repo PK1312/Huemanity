@@ -9,4 +9,4 @@ jobs:
   - stage: test2
     script: bash testscript.sh
   allow_failures:
-  - python: 3.6
+  - python: "3.6"
