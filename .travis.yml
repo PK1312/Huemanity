@@ -1,3 +1,8 @@
-language: python
+language: python 3.6
 sudo: required
-script: bash testscript.sh
+jobs:
+  include:
+    - stage: test1
+    - stage: test2
+    script: bash testscript.py
+  allow_failures: python 3.6
