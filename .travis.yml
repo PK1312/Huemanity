@@ -5,4 +5,5 @@ jobs:
     -stage: test1
     -stage: test2
     script: bash testscript.py
-  allow_failures: python 3.6
+    allow_failures:
+      python: 3.6
