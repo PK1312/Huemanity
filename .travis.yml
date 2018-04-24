@@ -8,5 +8,5 @@ jobs:
     script: 404.sh
   - stage: test2
     script: bash testscript.sh
-    allow_failures:
-      python: 3.6
+  allow_failures:
+    python: 3.6
