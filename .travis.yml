@@ -1,4 +1,5 @@
 language: ruby
 sudo: required
+dist: precise
 before_install: gem install specs
 script: true
