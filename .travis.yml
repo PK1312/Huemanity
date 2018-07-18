@@ -1,5 +1,8 @@
-language: ruby
+language: android
 sudo: required
-dist: precise
-before_install: gem install specs
+before_install:
+  addons:
+  apt:
+    packages:
+      - ant
 script: true
