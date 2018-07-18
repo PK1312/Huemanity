@@ -1,8 +1,8 @@
 language: android
 sudo: required
-before_install:
-  addons:
+addons:
   apt:
     packages:
       - ant
+install: ant deps
 script: true
