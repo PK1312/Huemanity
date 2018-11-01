@@ -1,8 +1,6 @@
-language: android
+language: java
+jdk:
+  - openJDK8
 sudo: required
-addons:
-  apt:
-    packages:
-      - ant
-install: ant deps
+
 script: true
