@@ -2,5 +2,4 @@ language: java
 jdk:
   - openJDK8
 sudo: required
-
 script: true
