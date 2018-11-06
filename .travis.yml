@@ -1,5 +1,22 @@
-language: java
-jdk:
-  - openJDK8
-sudo: required
-script: true
+language: node_js
+node_js:
+  - lts/*
+  - node
+
+stages:
+  - test
+  - name: release
+    if: branch = master AND type NOT pull_request
+
+jobs:
+  include:
+    - stage: release
+      if: branch = master AND type NOT pull_request
+      node_js: node
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: npx semantic-release
+        on:
+          branch: master
