@@ -6,7 +6,7 @@ node_js:
 stages:
   - test
   - name: release
-    if: branch = master AND type NOT pull_request
+    if: branch = master AND NOT type = pull_request
 
 jobs:
   include:
