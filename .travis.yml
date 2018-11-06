@@ -11,7 +11,7 @@ stages:
 jobs:
   include:
     - stage: release
-      if: branch = master AND type NOT pull_request
+      if: branch = master AND NOT type pull_request
       node_js: node
       script: skip
       deploy:
