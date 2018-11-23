@@ -1,7 +1,7 @@
 language: ruby
-os:
-  - linux
-  - osx
-script:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./testscript.sh          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./testscript1.sh          ; fi
+services: docker
+before_install:
+  - docker build -t pk1312/Huemanity
+  - docker run -d -p 127.0.0.1:80:4567 pk1312/Huemanity /bin/sh -c "cd /root/Huemanity; bundle exec foreman start;"
+
+script: testscript.sh
