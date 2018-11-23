@@ -1,7 +1,7 @@
 language: ruby
 services: docker
 before_install:
-  - docker build -t pk1312/Huemanity
-  - docker run -d -p 127.0.0.1:80:4567 pk1312/Huemanity /bin/sh -c "cd /root/Huemanity; bundle exec foreman start;"
+  - docker build -t pk1312/huemanity
+  - docker run -d -p 127.0.0.1:80:4567 pk1312/huemanity /bin/sh -c "cd /root/huemanity; bundle exec foreman start;"
 
 script: testscript.sh
