@@ -3,5 +3,5 @@ os:
   - linux
   - osx
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then testscript1.sh          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then testscript2.sh          ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./testscript1.sh          ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./testscript2.sh          ; fi
