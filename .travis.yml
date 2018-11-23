@@ -1,6 +1,9 @@
-language: python
-addons:
-  artifacts: true
-script: deliberate_fail.sh
-after_failure:
-  - artifacts upload
+language: ruby
+os:
+  - linux
+  - osx
+script:
+  - test1.sh
+  if: os = linux
+  - test2.sh
+  if: os = osx
