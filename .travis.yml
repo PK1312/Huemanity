@@ -4,6 +4,6 @@ os:
   - osx
 script:
   - test1.sh
-  if: os = linux
+if: os = linux
   - test2.sh
-  if: os = osx
+if: os = osx
