@@ -3,7 +3,7 @@ os:
   - linux
   - osx
 script:
-  - test1.sh
 if: os = linux
-  - test2.sh
+  - test1.sh
 if: os = osx
+  - test2.sh
