@@ -1,4 +1,2 @@
-language: node_js
-node_js:
-  - "node"
-script: node --version
+language: python
+script: bash testscript.sh
