@@ -1,2 +1,2 @@
 language: python
-script: bash testscript.sh
+script: bash this_should_fail.sh
