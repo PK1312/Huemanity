@@ -6,6 +6,6 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - checkout
-      - run: pip install --upgrade pip
+      - run: sudo pip install --upgrade pip
       - run: pip install qhue
       - run: echo "hello world!"
