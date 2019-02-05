@@ -7,5 +7,5 @@ jobs:
     steps:
       - checkout
       - run: sudo pip install --upgrade pip
-      - run: pip install qhue
+      - run: sudo pip install qhue
       - run: echo "hello world!"
