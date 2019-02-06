@@ -20,7 +20,7 @@ workflows:
   one-and-two:
     jobs:
       - one:
-        type: approval
+          type: approval
       - two:
           requires:
             - one
