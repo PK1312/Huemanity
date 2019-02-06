@@ -12,5 +12,5 @@ jobs:
   two:
     docker:
       - image: circleci/python:3.6.1
-      steps:
-        - echo "if you see this the second job worked"
+    steps:
+      - echo "if you see this the second job worked"
