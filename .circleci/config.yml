@@ -13,7 +13,7 @@ jobs:
     docker:
       - image: circleci/python:3.6.1
     steps:
-      - echo "if you see this the second job worked"
+      - run: echo "if you see this the second job worked"
 workflows:
   version: 2
   one_and_two:
