@@ -14,12 +14,12 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - run: echo "hopefully this ran sequentially"
-      
+
 workflows:
   version: 2
-  one_and_two:
+  one-and-two:
     jobs:
       - one
       - two:
-        requires:
-          - one
+          requires:
+            - one
