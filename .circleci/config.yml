@@ -1,7 +1,7 @@
 
 version: 2
 jobs:
-  build:
+  one:
     docker:
       - image: circleci/python:3.6.1
     steps:
@@ -9,3 +9,8 @@ jobs:
       - run: sudo pip install --upgrade pip
       - run: sudo pip install qhue
       - run: echo "hello world!"
+  two:
+    docker:
+      - image: circleci/python:3.6.1
+      steps:
+        - echo "if you see this the second job worked"
