@@ -19,7 +19,8 @@ workflows:
   version: 2
   one-and-two:
     jobs:
-      - one
+      - one:
+        type: approval
       - two:
           requires:
             - one
