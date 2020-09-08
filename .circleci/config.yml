@@ -32,7 +32,6 @@ jobs:
   dsf ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -51,7 +50,6 @@ jobs:
   dfc tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -70,7 +68,6 @@ jobs:
   ids tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -87,7 +84,6 @@ jobs:
   sci ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -106,7 +102,6 @@ jobs:
   des ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -125,7 +120,6 @@ jobs:
   dlf tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -144,7 +138,6 @@ jobs:
   cook ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -163,7 +156,6 @@ jobs:
   dam tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -182,7 +174,6 @@ jobs:
   dfc ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -201,7 +192,6 @@ jobs:
   ahc ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -220,7 +210,6 @@ jobs:
   ids ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -239,7 +228,6 @@ jobs:
   apl ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -258,7 +246,6 @@ jobs:
   food tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -277,7 +264,6 @@ jobs:
   vel ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -296,7 +282,6 @@ jobs:
   sci tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -315,7 +300,6 @@ jobs:
   cook tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -334,7 +318,6 @@ jobs:
   dsc ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -353,7 +336,6 @@ jobs:
   trav ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -372,7 +354,6 @@ jobs:
   vel tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -391,7 +372,6 @@ jobs:
   apl tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -410,7 +390,6 @@ jobs:
   dsc tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -429,7 +408,6 @@ jobs:
   dam ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -448,7 +426,6 @@ jobs:
   dsf tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -467,7 +444,6 @@ jobs:
   hgtv ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -486,7 +462,6 @@ jobs:
   tlc tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -505,7 +480,6 @@ jobs:
   tlc ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -525,7 +499,6 @@ jobs:
   diy tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -544,7 +517,6 @@ jobs:
   des tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -563,7 +535,6 @@ jobs:
   ahc tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -582,7 +553,6 @@ jobs:
   dlf ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -601,7 +571,6 @@ jobs:
   diy ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -620,7 +589,6 @@ jobs:
   food ios:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -639,7 +607,6 @@ jobs:
   own tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -658,7 +625,6 @@ jobs:
   hgtv tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
@@ -677,7 +643,6 @@ jobs:
   trav tvos:
     macos:
       xcode: 11.3.0
-    resource_class: large
     working_directory: ~/project
     shell: /bin/bash --login -eo pipefail
     steps:
