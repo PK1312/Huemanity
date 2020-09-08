@@ -1,26 +1,735 @@
-
 version: 2
-jobs:
-  one:
-    docker:
-      - image: circleci/python:3.6.1
-    steps:
-      - checkout
-      - run: sudo pip install --upgrade pip
-      - run: sudo pip install qhue
-      - run: echo "hello world!"
-  two:
-    docker:
-      - image: circleci/python:3.6.1
-    steps:
-      - run: echo "hopefully this ran sequentially"
 
+git-submodules: &submodules
+    - run:
+        name: load git submodules
+        command: git submodule update --init
+ruby-version: &ruby-version
+    - run:
+        name: Install correct ruby version
+        command: echo 'chruby ruby-2.6' >> ~/.bash_profile
+bundler-gems: &bundler-gems
+    - run:
+        name: Configure bundler and install gems
+        command: |
+          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+          source $BASH_ENV
+          gem install bundler
+          bundle config set path 'vendor/bundle' && bundle install
+faslane: &fastlane
+    - run:
+        name: Fastlane build step
+        command: bundle exec fastlane $LANE $PARAMS
+artifacts: &artifacts
+    - store_artifacts:
+        path: output
+persist: &persist
+    - persist_to_workspace:
+        root: ~/project
+        paths:
+        - ./output/gym/*
+jobs:
+  dsf ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dsf platform:ios
+  dfc tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dfc platform:tvos
+  ids tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:ids platform:tvos
+  sci ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:sci platform:ios
+  des ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:des platform:ios
+  dlf tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dlf platform:tvos
+  cook ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:cook platform:ios
+  dam tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dam platform:tvos
+  dfc ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dfc platform:ios
+  ahc ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:ahc platform:ios
+  ids ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:ids platform:ios
+  apl ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:apl platform:ios
+  food tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:food platform:tvos
+  vel ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:vel platform:ios
+  sci tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:sci platform:tvos
+  cook tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:cook platform:tvos
+  dsc ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dsc platform:ios
+  trav ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:trav platform:ios
+  vel tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:vel platform:tvos
+  apl tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:apl platform:tvos
+  dsc tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dsc platform:tvos
+  dam ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dam platform:ios
+  dsf tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dsf platform:tvos
+  hgtv ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:hgtv platform:ios
+  tlc tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:own platform:ios
+  tlc ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - run:
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:tlc platform:ios
+  diy tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:diy platform:tvos
+  des tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:des platform:tvos
+  ahc tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:ahc platform:tvos
+  dlf ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:dlf platform:ios
+  diy ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:diy platform:ios
+  food ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:food platform:ios
+  own tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:own platform:tvos
+  hgtv tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:hgtv platform:tvos
+  trav tvos:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
+    - PARAMS: identifier:trav platform:tvos
 workflows:
   version: 2
-  one-and-two:
+  nightly-builds:
     jobs:
-      - one:
-          type: approval
-      - two:
-          requires:
-            - one
+    - ahc ios
+    - ahc tvos
+    - apl ios
+    - apl tvos
+    - cook ios
+    - cook tvos
+    - dam ios
+    - dam tvos
+    - des ios
+    - des tvos
+    - dfc ios
+    - dfc tvos
+    - diy ios
+    - diy tvos
+    - dlf ios
+    - dlf tvos
+    - dsc ios
+    - dsc tvos
+    - dsf ios
+    - dsf tvos
+    - food ios
+    - food tvos
+    - hgtv ios
+    - hgtv tvos
+    - ids ios
+    - ids tvos
+    - own ios
+    - own tvos
+    - sci ios
+    - sci tvos
+    - tlc ios
+    - tlc tvos
+    - trav ios
+    - trav tvos
+    - vel ios
+    - vel tvos
