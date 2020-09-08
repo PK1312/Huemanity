@@ -475,6 +475,25 @@ jobs:
     environment:
     - FL_OUTPUT_DIR: output
     - LANE: upload_enterprise
+    - PARAMS: identifier:tlc platform:tvos
+own ios:
+    macos:
+      xcode: 11.3.0
+    resource_class: large
+    working_directory: ~/project
+    shell: /bin/bash --login -eo pipefail
+    steps:
+    - checkout:
+        path: ~/project
+    - <<: *submodules
+    - <<: *ruby-version
+    - <<: *bundler-gems
+    - <<: *fastlane
+    - <<: *artifacts
+    - <<: *persist
+    environment:
+    - FL_OUTPUT_DIR: output
+    - LANE: upload_enterprise
     - PARAMS: identifier:own platform:ios
   tlc ios:
     macos:
